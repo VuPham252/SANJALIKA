@@ -10,6 +10,7 @@ var cookieSession = require('cookie-session');
 
 // import cac route
 var usersRouter = require('./routes/users');
+var newRouter = require('./routes/newRoute');
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use((req, res, next) =>{
   next();
 })
 app.use('/', usersRouter);
+app.use('/', newRouter);
 
 // catch 404 and forward to error handler
 
