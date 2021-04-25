@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%- include("head.ejs"); %>
+</head>
+<body>
+<div id="blur" >
+    <section class="col-md-12" id="dashboard1">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">SANJALIKA</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a href="/dang-ky" class="nav-link show-btn" id="dang-ky">Sign up</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a for="show" class="nav-link show-btn" href="/mua-ve" id="dang-nhap">Sign
+                                in</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="dang-ky">
+        <form class="form" id="form">
+            <h3 class="text-center">Sign up</h3>
+            <div class="control">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="control">
+                <input type="email" id="email" name="email" placeholder="Email">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="control">
+                <input type="password" id="password1" name="password" placeholder="Password">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="control">
+                <input type="password" id="password2" name="password" placeholder="Confirm">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+
+            <button type="button" onclick="signUp()">Sign up</button>
+        </form>
+    </div>
+
+    <div class="footer mt-5">
+        <div class="container menu-footer">
+            <ul class="inner-footer">
+                <li><a href="">HOME</a></li>
+                <li><a href="">ABOUT US</a></li>
+                <li><a href="">ACTIVITIES</a></li>
+                <li><a href="">CONTACT US</a></li>
+                <li><a href="">NEWS</a></li>
+                <li><a href="">MAPS</a></li>
+                <li><a href="">SUPPORT</a></li>
+            </ul>
+            <h1 class="text-center">SANJALIKA WATER PARK</h1>
+            <div class="footer-three-icon">
+                <div class="home-three-icon">
+                    <a href="" class="icon-twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="home-three-icon">
+                    <a href="" class="icon-facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <div class="home-three-icon">
+                    <a href="" class="icon-instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <h4 class="text-center"><span style="color:white; font-weight: bold;">SANJALIKA</span> © 2021 All Rights
+                Reserved.</h4>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<section class="signup-form" id="popup">
+    <label for="show" class="close-btn fas fa-times" onclick="toggle()"></label>
+    <h4 class="text-center">Congratulations, your account has been successfully created!</h4>
+    <a href="/mua-ve" style="text-align:center;display:block" ;>Back to buy tickets page</a>
+</section>
+
+
+<script type="text/javascript">
+    const form = document.getElementById('form');
+    const username = document.getElementById('username');
+    const email = document.getElementById('email');
+    const password1 = document.getElementById('password1');
+    const password2 = document.getElementById('password2');
+
+
+    async function validateInput() {
+        let usernameValue = username.value.trim();
+        let emailValue = email.value.trim();
+        let password1Value = password1.value.trim();
+        let password2Value = password2.value.trim();
+        let successField = 0;
+
+        if (usernameValue === "") {
+            onError(username, "Username is required");
+        } else {
+            onSuccess(username);
+            successField += 1;
+        }
+        if (emailValue === "") {
+            onError(email, "Email is required");
+        } else {
+            if (!isValidEmail(emailValue)) {
+                onError(email, "Invalid email");
+            } else {
+                let response = await
+                    fetch(window.location.origin + "/check-unique?email=" + emailValue)
+                        .then(response => response.text())
+
+                response = await response;
+                console.log(response);
+                if (response !== "ok") {
+                    onError(email, "Email is already registered");
+                } else {
+                    onSuccess(email);
+                    successField += 1;
+                }
+            }
+        }
+        if (password1Value === "") {
+            onError(password1, "Password is required");
+        } else if (password1Value.length < 8) {
+            onError(password1, "Atleast 8 characters");
+        } else {
+            onSuccess(password1);
+            successField += 1;
+        }
+        if (password2Value === "") {
+            onError(password2, "Confirm password is required");
+        } else {
+            if (password2Value !== password1Value) {
+                onError(password2, "Password are not matching");
+            } else {
+                onSuccess(password2);
+                successField += 1;
+            }
+        }
+        return successField;
+    }
+
+    async function signUp() {
+        let successField = await validateInput();
+        if (successField == 4) {
+            let data = {};
+            data.username = username.value.trim();
+            data.email = email.value.trim();
+            data.password1 = password1.value.trim();
+            console.log(data);
+            let status = new Promise((resolve, reject) => {
+
+                fetch(window.location.origin + "/dang-ky", {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data) // body data type must match "Content-Type" header
+                }).then(data => data.text()).then(data => resolve(data));
+            });
+            status = await status;
+            console.log(status);
+
+        toggle();
+        } else {
+            console.log("error");
+        }
+    }
+
+
+    function toggle() {
+        var blur = document.getElementById("blur");
+        blur.classList.toggle('active')
+        var popup = document.getElementById("popup");
+        popup.classList.toggle('active')
+    }
+
+    function onSuccess(input) {
+        let parent = input.parentElement;
+        let messageEle = parent.querySelector("small");
+        messageEle.style.visibility = "hidden";
+        parent.classList.remove("error");
+        parent.classList.add("success");
+
+    }
+
+    function onError(input, message) {
+        console.log(message)
+        let parent = input.parentElement;
+        let messageEle = parent.querySelector("small");
+        messageEle.style.visibility = "visible";
+        messageEle.innerText = message;
+        parent.classList.remove("success");
+        parent.classList.add("error");
+    }
+
+    function isValidEmail(email) {
+        let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+</script>
+</body>
+</html>

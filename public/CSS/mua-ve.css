@@ -1,0 +1,567 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+.footer{
+    background-image: url(https://halongcomplex.sunworld.vn/wp-content/themes/halongcomplex/dist/images/bg-footer.png);
+    min-height: 40vh;
+    background-size: cover;
+}
+.inner-footer
+{
+    padding-top: 7%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.inner-footer li
+{
+    list-style: none;
+    padding-right: 2%;
+}
+.inner-footer li a
+{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.footer-three-icon
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.menu-footer h1
+{
+    padding: 2% 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+}
+.home-three-icon:nth-child(2)
+{
+    padding: 0 2%;
+}
+.home-three-icon a
+{
+    display: inline-block;
+    justify-content: center;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+    color: #0fa3bb;
+    transition: 0.4s;
+}
+.home-three-icon:hover a
+{
+    background-color: #ffba00;
+    color: white;
+}
+.menu-footer h4
+{
+    margin-top: 6%;
+    font-size: 15px;
+}
+
+.navbar-nav a.nav-link, .navbar-brand, label.nav-link{
+    font-weight: bold;
+    color: #0a70b2 !important;
+}
+
+#dashboard1.active{
+    display: none;
+    background-color: #f8f9fa;
+}
+#dashboard1{
+    background-color: #f8f9fa;
+}
+#dashboard2{
+    display: none;
+    background-color: #f8f9fa;
+}
+#dashboard2.active{
+    display:block;
+    background-color: #f8f9fa;
+}
+.ngaydi input[type="date"]{
+    border-radius: 10px;
+    padding: 5px 20px;
+    font-weight: bold;
+    border: 1px solid grey;
+}
+
+.ngaydi input[type="date"]:focus{
+    outline: none;
+}
+.ngaydi label{
+    padding-right: 20px;
+}
+
+
+.nav-item #dang-ky, #user_name{
+    margin-right: 40px;
+
+}
+.ngaydi,.gio-hang{
+    display: inline-block;
+}
+#ticketinfo.active{
+    background-color: #FF3600;
+    color: #fafafa;
+    border:none;
+}
+.gio-hang a{
+    border: 1px solid grey;
+    padding: 7px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/*.gio-hang span b{*/
+/*    position: absolute;*/
+/*    z-index: 3;*/
+/*    font-size: 13px;*/
+/*    top: 49%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%,-50%);*/
+/*    color: white;*/
+/*}*/
+
+.gio-hang span {
+    position: absolute;
+    top:-8px;
+    right: -2px;
+    z-index: 2;
+    border-radius:50% ;
+    line-height: 20px;
+    background-color: #FF3600;
+    width: 20px;
+    height: 20px;
+}
+.gio-hang{
+    margin-left: 170px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.thong-tin{
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    margin: 20px auto 0;
+
+}
+
+#popup  {
+    width: 410px;
+    margin: 0 auto;
+    font-family: Tahoma, Geneva, sans-serif;
+    box-shadow: 0 0 8px grey;
+    padding: 30px;
+    position:fixed;
+    top: -35%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 7px;
+    transition: 500ms;
+    opacity: 0;
+}
+
+#popup.active{
+    transition: 500ms;
+    top:40%;
+    opacity: 1;
+}
+
+.login-form .close-btn{
+    position: absolute;
+    right: 20px;
+    top:15px;
+    font-size: 18px;
+    cursor:pointer;
+}
+.signup-form{
+    height: 200px;
+}
+.signup-form h4{
+    margin-top: 15px;
+}
+.signup-form a{
+    margin-top: 35px;
+    font-size: 18px;
+}
+.signup-form .close-btn{
+    position: absolute;
+    right: 20px;
+    top:15px;
+    font-size: 18px;
+    cursor:pointer;
+}
+
+.login-form p{
+    text-align: center;
+    padding-top: 20px;
+}
+
+#congrats{
+    width: 400px;
+    height: 250px;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%) scale(0);
+    position: absolute;
+    align-items: center;
+    background-color: #fafafa;
+
+    background-size: 500px;
+    box-shadow: 0 0 8px grey;
+    border-radius: 20px;
+    z-index: -10;
+    transition: 200ms ease-in-out;
+}
+#congrats.active{
+    transition: 500ms;
+    z-index: 10;
+    transform: translate(-50%,-50%) scale(1);
+}
+.congrat-popup h4{
+    margin-top: 20px;
+}
+.congrat-popup i , .signup-form i{
+    font-size:90px;
+    color: #82c91e;
+    margin-top: 30px;
+}
+.congrat-popup button{
+    margin-top: 5px;
+    width: 95px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+.congrat-popup button:focus{
+    outline: none;
+}
+
+
+#blur.active{
+    filter: blur(10px);
+    transition: 500ms;
+    pointer-events: none;
+    user-select: none;
+}
+.show-btn{
+    cursor: pointer;
+}
+.login-form .close-btn:hover{
+    color: #3498db;
+}
+.login-form h1 {
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+.login-form input[type="password"],
+.login-form input[type="email"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    box-sizing:border-box;
+}
+.login-form input[type="password"]{
+    margin-top: 20px;
+}
+.login-form small{
+    position: absolute;
+    bottom: -24px;
+    left: 0;
+    color: red;
+    visibility: hidden;
+}
+
+.login-form .control-err{
+    position: relative;
+}
+.quenmatkhau{
+    margin-top: 25px;
+}
+.login-form button {
+    width: 100%;
+    padding: 15px;
+    background-color: #535b63;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 25px;
+
+}
+
+
+
+.ticket{
+    box-shadow: 0 0 8px grey;
+    position: relative;
+    margin: 30px 0;
+}
+.ticket img{
+    display: block;
+    width: 100%;
+}
+
+.ticket h3{
+    padding: 20px 10px;
+    border-bottom: 2px solid #FF3600;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ticket p{
+    font-weight: bold;
+    padding: 10px 10px;
+    display: inline-block;
+    font-size: 20px;
+}
+#price{
+    color:#FF3600;
+}
+
+.number-of-ticket{
+    position: absolute;
+    display: inline-block;
+    right: 20px;
+}
+.amount{
+    display: block;
+    box-sizing: border-box;
+    /*border: 1px solid black;*/
+    width: 35px;
+    height: 35px;
+}
+.number-of-ticket button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    /*transition: 400ms;*/
+    border: 2px solid #FF3600;
+    color: #FF3600;
+    background-color: #fafafa;
+}
+.plus:hover{
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+}
+.minus:hover{
+    background-color: #FF3600;
+    color: white;
+}
+
+.number-of-ticket button:focus{
+    outline: none;
+
+}
+.buy{
+    text-align: center;
+}
+
+.buy button{
+    width: 500px;
+    padding: 5px 0;
+    border-radius: 5px;
+    background-color: #007bff;
+    transition: 0.4s;
+    color: white;
+    margin: 20px auto;
+}
+.buy button:hover{
+    background: linear-gradient(to right, #007bff 50%, #FF3600 50%) no-repeat scroll right bottom/210% 100% #2671c1 ;
+}
+.buy button:focus{
+    outline: none;
+}
+
+
+#ticket-info .table{
+    background: #fafafa;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing:0;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(32,32,32,.3);
+}
+#ticket-info{
+    top: -40%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    position: fixed;
+    z-index: 14;
+    transition: 500ms;
+
+}
+#ticket-info.active{
+    top: 45%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    transition: 500ms;
+
+}
+.ticket-info-header{
+    background-color: #ECECEC;
+    box-shadow: 0 0 12px rgba(32,32,32,.3);
+    position: relative;
+    height:55px;
+
+}
+.ticket-info-header .close-btn{
+    position: absolute;
+    top:14px;
+    right: 14px;
+
+    cursor:pointer;
+    z-index: 14;
+}
+.ticket-info-header i{
+    font-size: 35px;
+    color: #FF3600;
+    transform: rotate(-45deg);
+    position: absolute;
+    top:11px;
+    left: 14px;
+}
+.ticket-info-header label{
+    font-size: 25px;
+}
+
+
+.ticket-info .table th, .ticket-info .table td{
+    padding: 15px 20px;
+}
+.ticket-info .table th{
+    border-top: none;
+    border-bottom: 1px solid #FF3600 ;
+    text-transform: uppercase;
+}
+/*th{*/
+/*    background:#ba68c8;*/
+/*    */
+/*}*/
+
+
+.dang-ky{
+    background-image: url("../img/roller1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-position-y: -200px;
+}
+.dang-ky input{
+    display: block;
+    width: 350px;
+    height: 40px;
+    margin: 0 10px;
+    border: 1px solid black;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+
+.dang-ky h3{
+    color: white;
+    padding-bottom: 15px;
+}
+.dang-ky button{
+    width: 350px;
+    height: 50px;
+    font-size: 20px;
+    background-color: #4d4d4d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 8px grey;
+}
+
+.dang-ky form{
+    background: #fff;
+    box-shadow: 0 0 8px grey;
+    margin: 75px auto auto;
+    padding: 30px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 7px;
+    backdrop-filter: blur(3px);
+}
+
+.control{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.control input{
+    display: inline-block;
+}
+
+.control small{
+    visibility: hidden;
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    color: white;
+}
+.login-form .control small{
+    color: red;
+}
+
+.control i{
+    position: absolute;
+    top: 13px;
+    right: 20px;
+    visibility: hidden;
+}
+
+.control.error input {
+    border-color: #e74c3c ;
+}
+.control.error i.fa-exclamation-circle{
+    visibility: visible;
+    color: #e74c3c;
+}
+
+.control.success input {
+    border-color: #2ecc71 ;
+}
+.control.success i.fa-exclamation-circle{
+    visibility: visible;
+    color: #2ecc71;
+}
+
+.control.error small{
+    color:white ;
+    visibility: visible;
+}
+/*.footer.mt-5{*/
+/*    margin-top: 0;*/
+/*}*/
+
+
+

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include("head.ejs"); %>
+</head>
+<body>
+
+<div id="blur">
+    <section class="col-md-12" id="dashboard1">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">SANJALIKA</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a href="/dang-ky" class="nav-link show-btn" id="dang-ky">Sign up</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a for="show" class="nav-link show-btn" href="#" id="dang-nhap" onclick="toggle()">Sign
+                                in</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <section class="col-md-12" id="dashboard2">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">SANJALIKA</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link show-btn" id="user_name"><%= user %></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <label onclick="onSignOut()" class="nav-link show-btn" href="#" id="dang-xuat">Sign
+                                out</label>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <section class="col-md-12">
+        <div class="container">
+            <div class="thong-tin">
+                <form class="ngaydi">
+                    <label for="ngay_di">Select day to use</label>
+                    <input type="date" id="ngay_di" name="ngay_di" value="<%= datePicker %>" onchange="handler();">
+                </form>
+                <div class="gio-hang" id="gio-hang">
+                    <a id="ticketinfo">Tickets</a>
+                    <!--                    <span><b>1</b></span>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="row" id="ticketSection">
+
+                <% for(var i = 0; i < ticketArray.length;i++){ %>
+                    <div class="col-md-3">
+                        <div class="ticket" id="<%= ticketArray[i].Id %>">
+                            <img src="<%= ticketArray[i].TicketImage%>">
+                            <h3><%= ticketArray[i].TicketName %></h3>
+                            <p id="price"><%= "$" + ticketArray[i].Price %></p>
+                            <div class="number-of-ticket">
+                                <button class="minus" onclick="decrement(this)">-</button>
+                                <p class="amount"></p>
+                                <button class="plus" onclick="increment(this)">+</button>
+                            </div>
+                            <p class="DayToUse" style="display: none"><%= ticketArray[i].DayToUse %></p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container">
+        <div class="buy">
+            <button class="text-center" id="mua-ve">Purchase</button>
+        </div>
+    </div>
+
+    <div class="footer mt-5">
+        <div class="container menu-footer">
+            <ul class="inner-footer">
+                <li><a href="">HOME</a></li>
+                <li><a href="">ABOUT US</a></li>
+                <li><a href="">ACTIVITIES</a></li>
+                <li><a href="">CONTACT US</a></li>
+                <li><a href="">NEWS</a></li>
+                <li><a href="">MAPS</a></li>
+                <li><a href="">SUPPORT</a></li>
+            </ul>
+            <h1 class="text-center">SANJALIKA WATER PARK</h1>
+            <div class="footer-three-icon">
+                <div class="home-three-icon">
+                    <a href="" class="icon-twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="home-three-icon">
+                    <a href="" class="icon-facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <div class="home-three-icon">
+                    <a href="" class="icon-instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <h4 class="text-center"><span style="color:white; font-weight: bold;">SANJALIKA</span> © 2021 All Rights
+                Reserved.</h4>
+        </div>
+    </div>
+</div>
+
+<section class="ticket-info" id="ticket-info">
+    <div class="container">
+        <div class="ticket-info-header">
+            <i class="fas fa-ticket-alt"></i>
+            <label class="close-btn fas fa-times" onclick="displayTicketInfo()"></label>
+        </div>
+        <table class="table" id="ticketArray">
+            <thead>
+            <th>ORDER</th>
+            <th>DATE</th>
+            <th>QUANTITY</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
+<section class="congrat-popup" id="congrats">
+    <div class="col text-center">
+        <i class="far fa-check-circle"></i>
+    </div>
+
+    <h4 class="text-center">Thank you for your purchase!</h4>
+    <div class="col text-center">
+        <button id="thanks">OK</button>
+    </div>
+</section>
+
+
+<section class="login-form" id="popup">
+    <label for="show" class="close-btn fas fa-times" onclick="toggle() , undisplay()"></label>
+    <h1>Sign in</h1>
+    <form>
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <div class="control-err">
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <small id="err-noti">Email or password is incorrect</small>
+        </div>
+        <div class="quenmatkhau">
+            <a href="#">Forgot password?</a>
+        </div>
+        <button id="dang_nhap">Sign in</button>
+        <p>Don't have an accout? <span><a href="/dang-ky">Sign up now</a></span></p>
+
+    </form>
+</section>
+
+
+<script type="text/javascript">
+    let buyTicket = new Map()
+    let successPost = 0;
+    let userName;
+
+
+    handler()
+    // window.addEventListener('mouseup', function (event) {
+    //    var box = document.getElementById("ticket-info");
+    //    if(event.target !== box){
+    //        // box.style.transform = box.style.transform.replace('scale(' + 0 + ')');
+    //        // box.style.display = 'none';
+    //        box.classList.toggle('active')
+    //    }
+    // });
+
+    // function changeScale(newScale){
+    //     var div = document.getElementById('theID');
+    //
+    // }
+
+    // function displayTicketInfo() {
+    //     var display = document.getElementById("gio-hang");
+    //     // box.style.transform.replace('scale(' + 1 + ')');
+    //     var box = document.getElementById("ticket-info");
+    //     box.classList.toggle('active')
+    // }
+
+
+    document.getElementById("gio-hang").addEventListener("click", (event) => {
+        event.preventDefault();
+        loginCheck().then(data => {
+            if (data.status === 200) {
+                displayTicketInfo();
+                getBuyTicket();
+            } else {
+                alert("You need to login to see your tickets!");
+            }
+        })
+    });
+
+    function displayTicketInfo() {
+        var display = document.getElementById("ticket-info");
+        display.classList.toggle('active');
+        var blur = document.getElementById("blur");
+        blur.classList.toggle('active')
+    }
+
+    function toggle() {
+        var blur = document.getElementById("blur");
+        blur.classList.toggle('active')
+        var popup = document.getElementById("popup");
+        popup.classList.toggle('active')
+    }
+
+    function displayCongrats() {
+        var display = document.getElementById("congrats");
+        display.classList.toggle('active');
+        var blur = document.getElementById("blur");
+        blur.classList.toggle('active')
+    }
+
+
+
+
+
+    function onSignIn(login = true) {
+        if (login) {
+            let unDisplay = document.getElementById("dashboard1");
+            unDisplay.classList.toggle('active')
+            let display = document.getElementById("dashboard2");
+            display.classList.toggle('active')
+            let ticketinfo = document.getElementById("ticketinfo");
+            ticketinfo.classList.toggle('active')
+
+        } else {
+            let unDisplay = document.getElementById("dashboard1");
+            unDisplay.classList.toggle('active')
+            let display = document.getElementById("dashboard2");
+            display.classList.toggle('active')
+            let ticketinfo = document.getElementById("ticketinfo");
+            ticketinfo.classList.toggle('active')
+
+        }
+    }
+
+    function onSignOut() {
+        fetch(window.location.origin + "/logout").then(data => {
+            location.reload();
+        });
+    }
+
+    async function loginCheck() {
+        return fetch(window.location.origin + "/login-check");
+    }
+
+    loginCheck().then(data => {
+        if (data.status === 200) {
+            onSignIn();
+        }
+    })
+
+
+    document.getElementById("mua-ve").addEventListener("click", (event) => {
+        event.preventDefault();
+        loginCheck().then(data => {
+            if (data.status === 200) {
+                purchase().then(() => {
+                    if (successPost > 0) {
+                        displayCongrats();
+                    } else {
+                        alert("SOMETHING WENT WRONG!");
+                    }
+                })
+
+            } else {
+                alert("YOU NEED TO LOGIN TO PURCHASE!");
+            }
+        })
+    });
+
+
+    document.getElementById("dang_nhap").addEventListener("click", async (event) => {
+        event.preventDefault();
+        let response = await
+            fetch(window.location.origin + "/login?email=" + document.getElementById('email').value.trim() +
+                "&password=" + document.getElementById('password').value.trim());
+        console.log(response);
+        if (response.status === 200) {
+            console.log("inhere")
+            // toggle();
+            // onSignIn();
+            location.reload();
+        } else {
+            display();
+        }
+    });
+
+
+    [].forEach.call(document.getElementsByClassName("amount"), function (div) {
+        div.innerText = 0;
+    });
+
+    function decrement(event) {
+
+        let data = event.parentNode.getElementsByClassName('amount')[0].innerText;
+        if (data > 0) {
+            event.parentNode.getElementsByClassName('amount')[0].innerText = data - 1;
+            buyTicket.set(event.parentNode.parentNode.id, buyTicket.get(event.parentNode.parentNode.id) - 1)
+        }
+
+    }
+
+    function increment(event) {
+        buyTicket.set(event.parentNode.parentNode.id, buyTicket.get(event.parentNode.parentNode.id) + 1)
+        let data = event.parentNode.getElementsByClassName('amount')[0].innerText;
+        event.parentNode.getElementsByClassName('amount')[0].innerText = Number(data) + 1;
+    }
+
+    function handler() {
+        const calendar = document.getElementById("ngay_di").value
+        console.log(calendar)
+        const chooseDate = new Date(calendar)
+        let divTicketSection = document.getElementById("ticketSection").childNodes;
+        [].forEach.call(divTicketSection, function (div) {
+            div.childNodes.forEach(node => {
+                if (node.childNodes.length != 0) {
+                    const id = node.id
+                    buyTicket.set(id, 0)
+                    let nodeDate = node.childNodes[9].innerText;
+                    nodeDate = new Date(nodeDate)
+                    if (nodeDate.getTime() !== chooseDate.getTime()) {
+                        document.getElementById(node.id).setAttribute("style", "visibility:hidden;")
+                    } else {
+                        document.getElementById(node.id).setAttribute("style", "visibility:visible;")
+                    }
+                }
+            })
+        });
+    }
+
+
+
+    async function purchase() {
+        let response = await
+            fetch(window.location.origin + "/getEmail")
+                .then(response => response.text())
+        response = await response;
+        for (let [key, value] of buyTicket) {
+            let data = {};
+            data.email = response;
+            data.id = key;
+            data.amount = value;
+            data.dayToUse = document.getElementById("ngay_di").value;
+
+            if (data.amount === 0) {
+                console.log("no ticket!")
+            } else {
+                let status = new Promise((resolve, reject) => {
+
+                    fetch(window.location.origin + "/mua-ve", {
+                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data) // body data type must match "Content-Type" header
+                    }).then(data => data.text()).then(data => resolve(data));
+                });
+                status = await status;
+                console.log(status);
+                successPost++;
+            }
+        }
+    }
+
+    function display() {
+        var display = document.getElementById("err-noti");
+        display.style.visibility = "visible";
+    }
+
+    function undisplay() {
+        var undisplay = document.getElementById("err-noti");
+        undisplay.style.visibility = "hidden";
+    }
+
+    async function getBuyTicket(){
+        let response = await
+        fetch(window.location.origin + "/ticket/getAll")
+            .then(response => response.json())
+        response = await response;
+        for(let ticket of response){
+            const table = document.getElementById('ticketArray');
+
+            /* Insert new row */
+            const row = table.insertRow();
+
+            /* Insert cells (td) for row */
+            const td0 = row.insertCell(0);
+            const td1 = row.insertCell(1);
+            const td2 = row.insertCell(2);
+
+
+            /* Populate cells with data */
+            td0.innerText = ticket.name;
+            td1.innerText = ticket.dayToUse;
+            td2.innerText = ticket.amount;
+            console.log(ticket);
+        }
+        // console.log(JSON.parse(response));
+    }
+
+    document.getElementById("thanks").addEventListener("click", () => {
+        displayCongrats();
+        location.reload();
+    })
+
+
+
+</script>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script>
+    // var input = document.getElementById('show');
+    // var select = document.querySelectorAll('.login-form')[0];
+    // input.onchange = function(){
+    //     select.style.display = this.checked? 'block': 'none';
+    // }
+</script>
+</body>
+</html>
