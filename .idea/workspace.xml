@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfc91459-ebfa-4e97-9182-a4581e41c3e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/static/js/21.19617c39.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/static/js/21.19617c39.chunk.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/static/js/runtime-main.228d2b21.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/static/js/runtime-main.228d2b21.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
@@ -36,7 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Project WaterWorld/Project WaterWorld/Front_End/sanjalika_project" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Web/Workout.html" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -65,7 +68,9 @@
       <workItem from="1619084441672" duration="42177000" />
       <workItem from="1619227101104" duration="1218000" />
       <workItem from="1619242920636" duration="3385000" />
-      <workItem from="1619315216970" duration="17100000" />
+      <workItem from="1619315216970" duration="18826000" />
+      <workItem from="1619431569981" duration="706000" />
+      <workItem from="1619587381350" duration="581000" />
     </task>
     <servers />
   </component>
@@ -82,5 +87,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
