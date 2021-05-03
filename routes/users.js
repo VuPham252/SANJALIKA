@@ -74,14 +74,16 @@ router.get("/login", async function (req, res) {
 
 router.get('/mua-ve', async function (req, res, next) {
     // logic lay data tu database
+    console.log('in here');
     try {
         let ticketArray = await ticket.findAll();
+        console.log(ticketArray);
         ticketArray = ticketArray.map(el => {
             return el.dataValues;
         })
 
         const now = new Date()
-        const datePicker = `${now.getFullYear()}-${now.getMonth() < 10 ? '0'+String((now.getMonth()+1)): String((now.getMonth()+1))}-${now.getDate() < 10 ? '0'+String(now.getDates()) : String(now.getDate())}`
+        const datePicker = `${now.getFullYear()}-${now.getMonth() < 10 ? '0'+String((now.getMonth()+1)): String((now.getMonth()+1))}-${now.getDate() < 10 ? '0'+String(now.getDate()) : String(now.getDate())}`
         res.render('index', {
             ticketArray: ticketArray,
             datePicker: datePicker,
@@ -89,6 +91,7 @@ router.get('/mua-ve', async function (req, res, next) {
         });
 
     } catch (err) {
+        console.log(err);
         res.sendStatus(500)
     }
 });
