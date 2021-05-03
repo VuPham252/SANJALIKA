@@ -352,9 +352,9 @@
                     let nodeDate = node.childNodes[9].innerText;
                     nodeDate = new Date(nodeDate)
                     if (nodeDate.getTime() !== chooseDate.getTime()) {
-                        document.getElementById(node.id).setAttribute("style", "visibility:hidden;")
+                        document.getElementById(node.id).setAttribute("style", "display:none;")
                     } else {
-                        document.getElementById(node.id).setAttribute("style", "visibility:visible;")
+                        document.getElementById(node.id).setAttribute("style", "display:block;")
                     }
                 }
             })
