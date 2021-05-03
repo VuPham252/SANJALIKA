@@ -46,6 +46,7 @@ router.post("/dang-ky", async (req, res) => {
         console.log(result);
         res.status(200).send('ok')
     } catch (err) {
+        console.log(err);
         res.status(500).send('something wrong')
     }
 })
@@ -68,6 +69,7 @@ router.get("/login", async function (req, res) {
         }
         res.sendStatus(200)
     } catch (err) {
+        console.log(err);
         res.sendStatus(500)
     }
 })
@@ -124,6 +126,7 @@ router.post('/mua-ve', async (req, res) => {
         console.log(result);
         res.status(200).send('ok')
     } catch (err) {
+        console.log(err);
         res.status(500).send('something wrong')
     }
 })
