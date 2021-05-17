@@ -477,7 +477,7 @@
 }
 .dang-ky input{
     display: block;
-    width: 350px;
+    width: 400px;
     height: 40px;
     margin: 0 10px;
     border: 1px solid black;
@@ -492,7 +492,7 @@
     padding-bottom: 15px;
 }
 .dang-ky button{
-    width: 350px;
+    width: 400px;
     height: 50px;
     font-size: 20px;
     background-color: #4d4d4d;
@@ -500,18 +500,27 @@
     color: white;
     border-radius: 5px;
     box-shadow: 0 0 8px grey;
+    margin-top: 10px;
 }
 
 .dang-ky form{
     background: #fff;
     box-shadow: 0 0 8px grey;
-    margin: 75px auto auto;
+    margin: 150px auto auto;
     padding: 30px;
     background: rgba(0,0,0,0.5);
     border-radius: 7px;
     backdrop-filter: blur(3px);
 }
 
+.dang-ky form p{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 0;
+    text-align: left;
+    margin-left: 15px;
+}
 .control{
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -534,7 +543,7 @@
 
 .control i{
     position: absolute;
-    top: 13px;
+    top: 39px;
     right: 20px;
     visibility: hidden;
 }
